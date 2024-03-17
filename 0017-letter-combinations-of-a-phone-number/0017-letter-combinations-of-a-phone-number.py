@@ -16,15 +16,13 @@ class Solution:
 
         combinations = ['']
 
-        for digit in digits:
-            # print(f"Digit: {digit}")
-            new_combinations = []
-            for combination in combinations:
-                # print(f"Combination: {combination}, Combinations: {combinations}")
-                for letter in digit_map[digit]:
-                    # print(f"Letter: {letter}")
-                    # print(f"Appending: {combination + letter}")
-                    new_combinations.append(combination + letter)
-            combinations = new_combinations
+        def backtrack(combination, next_digits):
+            if not next_digits:  
+                output.append(combination)  
+            else:
+                for letter in digit_map[next_digits[0]]:
+                    backtrack(combination + letter, next_digits[1:])
 
-        return combinations
+        output = []  
+        backtrack('', digits)  
+        return output
