@@ -20,4 +20,4 @@ class Solution:
         #SWAP
         nums[swap], nums[pivot-1] = nums[pivot-1], nums[swap]
 
-        nums[pivot:] = sorted(nums[pivot:])
+        nums[pivot:] = reversed(nums[pivot:])
