@@ -8,7 +8,5 @@ class Solution:
         translate_dict  = {pattern[i]: s[i] for i in range(len(pattern))}
         trans = str.maketrans(translate_dict)
         pattern_after = [s.translate(trans) for s in pattern]
-        # print(pattern)
-        # print(pattern_after)
 
         return pattern_after == s
