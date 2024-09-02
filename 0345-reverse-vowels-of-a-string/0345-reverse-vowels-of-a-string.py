@@ -15,10 +15,7 @@ class Solution:
                     pointer_2 -= 1
                 else:
                     pointer_2 -= 1
-            # elif s[pointer_1] in vowels and s[pointer_2] not in vowels:
-            #     pointer_2 -= 1
 
-            # elif s[pointer_1] not in vowels and s[pointer_2] in vowels:
             else:
                 if s[pointer_2] in vowels:
                     pointer_1 += 1
@@ -26,8 +23,5 @@ class Solution:
                     pointer_1 += 1
                     pointer_2 -= 1
 
-            # else:
-            #     pointer_1 += 1
-            #     pointer_2 -= 1
         
         return "".join(s)
