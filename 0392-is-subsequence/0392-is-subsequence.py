@@ -9,7 +9,7 @@ class Solution:
             t = t.replace(t[:ind+1], "%"*(ind+1), 1)
             # print(t)
         
-        # if any(x == -1 for x in out): return False
+        if any(x == -1 for x in out): return False
         # print(out)
         # print(out == sorted(out))
         return (out == sorted(out))
