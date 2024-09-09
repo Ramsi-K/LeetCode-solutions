@@ -6,7 +6,6 @@ class Solution:
         for i in factors[::-1]:
             if i == 1:
                 subsets = list(s)
-                print(subsets)
                 return subsets.count(subsets[0]) == n
 
             else:                    
