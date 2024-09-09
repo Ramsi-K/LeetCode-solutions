@@ -20,7 +20,5 @@ class Solution:
         
         # return False
 
-        if not s:
-            return False   
-        ss = (s + s)[1:-1]
-        return ss.find(s) != -1
+        check = (s + s)[1:-1].find(s)
+        return s[:check+1]
