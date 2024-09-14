@@ -1,7 +1,6 @@
 class Solution:
     def checkRecord(self, s: str) -> bool:
-        counter = {i: s.count(i) for i in s}
-        # print(counter)
+        counter = Counter(s)
         if counter.get("A", 0) < 2:
             if counter.get("L", 0) < 3: return True
             else: 
@@ -9,5 +8,6 @@ class Solution:
                 if out : return False
                 else: return True
                 # print(out)
+                
 
         
