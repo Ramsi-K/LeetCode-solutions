@@ -2,6 +2,7 @@ class Solution:
     def validPalindrome(self, s: str) -> bool:
         p1 = 0
         p2 = len(s)-1
+        if s[::-1] == s: return True
         while p1 <= p2:
             if s[p1] != s[p2]:
                 string1 = s[:p1] + s[p1+1:]
