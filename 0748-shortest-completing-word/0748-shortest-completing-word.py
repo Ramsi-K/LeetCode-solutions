@@ -1,18 +1,13 @@
 class Solution:
     def shortestCompletingWord(self, licensePlate: str, words: List[str]) -> str:
-        lp_word = ''.join(x.lower() for x in licensePlate if x.isalpha())
-        counts = Counter(lp_word)
-        keys = set(counts.keys())
-        out = []
+        lp_counts = Counter(char.lower() for char in licensePlate if char.isalpha())        
+        shortest_word = None
 
         for word in words:
-            cnts = Counter(word)
-            keys_to_remove = set(cnts.keys()) - keys
+            word_counts = Counter(word)
+            
+            if all(word_counts[char] >= lp_counts[char] for char in lp_counts):
+                if shortest_word is None or len(word) < len(shortest_word):
+                    shortest_word = word
 
-            for key in keys_to_remove:
-                del cnts[key]
-            if cnts.keys() == counts.keys():
-                if all(cnts[k] >= counts[k] for k in cnts.keys()):                
-                    out.append(word)
-
-        return min(out, key=len) if out else 0
+        return shortest_word
