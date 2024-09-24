@@ -5,9 +5,11 @@ class Solution:
 
         suffixes = ["ma" + "a" * (i + 1) for i in range(len(words))]  # Precompute suffixes
 
-        result = [
-            f"{word}{suffixes[i]}" if word[0] in vowels else f"{word[1:]}{word[0]}{suffixes[i]}"
-            for i, word in enumerate(words)
-        ]
+        for i in range(len(words)):
+            word = words[i]
+            if word[0] in vowels:
+                result.append(f"{word}{suffixes[i]}")
+            else:
+                result.append(f"{word[1:]}{word[0]}{suffixes[i]}")
 
         return " ".join(result)
