@@ -1,6 +1,6 @@
 class Solution:
     def toGoatLatin(self, sentence: str) -> str:
-        vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
+        vowels = "aeiouAEIOU"
         words = sentence.split(" ")
 
         suffixes = ["ma" + "a" * (i + 1) for i in range(len(words))]  # Precompute suffixes
