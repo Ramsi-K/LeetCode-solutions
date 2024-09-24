@@ -4,7 +4,8 @@ class Solution:
         words = sentence.split(" ")
 
         suffixes = ["ma" + "a" * (i + 1) for i in range(len(words))]  # Precompute suffixes
-
+        result = []
+        
         for i in range(len(words)):
             word = words[i]
             if word[0] in vowels:
