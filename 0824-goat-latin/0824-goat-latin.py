@@ -3,11 +3,11 @@ class Solution:
         vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
         words = sentence.split(" ")
 
-        for i, word in enumerate(words):
-            suffix = "ma" + "a" * (i + 1)
-            if word[0] in vowels:
-                words[i] = word + suffix
-            else:
-                words[i] = word[1:] + word[0] + suffix
+        suffixes = ["ma" + "a" * (i + 1) for i in range(len(words))]  # Precompute suffixes
 
-        return " ".join(words)
+        result = [
+            f"{word}{suffixes[i]}" if word[0] in vowels else f"{word[1:]}{word[0]}{suffixes[i]}"
+            for i, word in enumerate(words)
+        ]
+
+        return " ".join(result)
