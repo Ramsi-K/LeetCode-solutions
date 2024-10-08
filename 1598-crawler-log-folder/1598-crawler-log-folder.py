@@ -1,15 +1,13 @@
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
-        stack = []
+        depth = 0
         for action in logs:
-            if stack and action == "../":
-                stack.pop()
+            if depth > 0 and action == "../":
+                depth -= 1
             elif action == "./" or action == "../":
                 continue
             else:
-                stack.append(action)
+                depth += 1
         
-        # print(stack)
-        # print(len(stack))
-        return len(stack)
+        return depth
 
