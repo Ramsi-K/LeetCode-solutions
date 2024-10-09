@@ -1,19 +1,10 @@
 class Solution:
     def reversePrefix(self, word: str, ch: str) -> str:
-        stack = []
         n = 0
-        found = False
-        for char in word:
+        for i, char in enumerate(word):
             if char == ch:
-                stack.insert(0, char)
-                n += 1
-                found = True
+                n = i+1
                 break
-            else:
-                stack.insert(0, char)
-                n += 1
 
-        if found:
-            return "".join(stack) + word[n:]
-        return word
-
+        return word[:n][::-1] + word[n:]
+        
