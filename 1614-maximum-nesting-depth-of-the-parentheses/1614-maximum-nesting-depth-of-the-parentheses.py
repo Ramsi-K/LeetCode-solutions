@@ -5,11 +5,10 @@ class Solution:
         for char in s:
             if char == "(": 
                 curr_depth += 1
+                max_depth = max(curr_depth, max_depth)
             elif char == ")":
                 curr_depth -= 1
-            
-            if curr_depth > max_depth:
-                max_depth = curr_depth
+
         
         return max_depth
 
