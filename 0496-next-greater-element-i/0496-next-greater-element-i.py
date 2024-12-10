@@ -3,11 +3,7 @@ class Solution:
         out = []
         for num in nums1:
             index = nums2.index(num)
-            found = -1
-            for elem in nums2[index + 1:]:
-                if elem > num:
-                    found = elem
-                    break
+            found = next((elem for elem in nums2[index + 1:] if elem > num), -1)
             out.append(found)
         
         # print(out)
