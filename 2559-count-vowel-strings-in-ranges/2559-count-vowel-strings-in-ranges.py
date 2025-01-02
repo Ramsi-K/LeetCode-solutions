@@ -3,19 +3,15 @@ class Solution:
         def is_vowel(ch: str) -> bool:
             return ch in {'a', 'e', 'i', 'o', 'u'}
     
-        # Step 1: Create the binary array
-        binary = [
-            1 if is_vowel(word[0]) and is_vowel(word[-1]) else 0
-            for word in words
-        ]
+        # Step 1: Build the prefix sum array
+        n = len(words)
+        prefix = [0] * n
+        prefix[0] = 1 if is_vowel(words[0][0]) and is_vowel(words[0][-1]) else 0
         
-        # Step 2: Build the prefix sum array
-        prefix = [0] * len(binary)
-        prefix[0] = binary[0]
-        for i in range(1, len(binary)):
-            prefix[i] = prefix[i - 1] + binary[i]
+        for i in range(1, n):
+            prefix[i] = prefix[i - 1] + (1 if is_vowel(words[i][0]) and is_vowel(words[i][-1]) else 0)
         
-        # Step 3: Answer each query
+        # Step 2: Answer each query
         ans = []
         for l, r in queries:
             if l == 0:
