@@ -1,15 +1,11 @@
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
-        total_sum = sum(nums)  # Total sum of the array
-        left_sum = 0           # Initialize left sum
-        valid_splits = 0       # Counter for valid splits
+        left = 0
+        right = (sum(nums) + 1) // 2  # Precompute the threshold
+        res = 0
 
-        # Iterate through the array, stopping at n-1 to ensure non-empty right segment
-        for i in range(len(nums) - 1):
-            left_sum += nums[i]         # Add current element to left sum
-            total_sum -= nums[i]        # Subtract current element from total_sum (right sum)
-            
-            if left_sum >= total_sum:   # Check if it's a valid split
-                valid_splits += 1
-        
-        return valid_splits
+        for i in range(len(nums) - 1):  # Ensure non-empty right part
+            left += nums[i]            # Incrementally compute the left sum
+            if left >= right:          # Check the condition for valid split
+                res += 1
+        return res
