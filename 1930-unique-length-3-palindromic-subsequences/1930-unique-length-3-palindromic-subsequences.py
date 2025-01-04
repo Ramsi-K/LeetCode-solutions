@@ -1,23 +1,20 @@
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
-        n = len(s)
-        prefix = [[0] * 26 for _ in range(n)]
-        
-        # Build prefix sum
-        for i in range(n):
-            if i > 0:
-                prefix[i] = prefix[i - 1][:]
-            prefix[i][ord(s[i]) - ord('a')] += 1
-        
         unique_palindromes = set()
-        
-        # Iterate over each middle character
-        for i, char in enumerate(s):
-            left = prefix[i - 1] if i > 0 else [0] * 26
-            right = [prefix[n - 1][j] - prefix[i][j] for j in range(26)]
             
-            for c in range(26):
-                if left[c] > 0 and right[c] > 0:
-                    unique_palindromes.add(chr(c + ord('a')) + char + chr(c + ord('a')))
+        for char in set(s):
+            first = s.find(char)
+            last = s.rfind(char)
+            
+            if last - first > 1:
+                # Create a bitmask for intermediate characters
+                bitmask = 0
+                for mid_char in s[first + 1 : last]:
+                    bitmask |= (1 << (ord(mid_char) - ord('a')))
+                
+                # Check all possible middle characters
+                for i in range(26):
+                    if bitmask & (1 << i):
+                        unique_palindromes.add(char + chr(i + ord('a')) + char)
         
         return len(unique_palindromes)
