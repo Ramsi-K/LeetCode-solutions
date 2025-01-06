@@ -1,20 +1,31 @@
-import numpy as np
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         n = len(boxes)
-        
-        # Convert binary string to array of integers
-        binary_array = np.array([int(x) for x in boxes])
-        
-        # Create an n x n distance matrix
-        indices = np.arange(n)
-        distance_matrix = np.abs(indices[:, None] - indices)
-        
-        # Multiply distance matrix with binary array
-        contribution_matrix = distance_matrix * binary_array
-        
-        # Sum rows to get the total operations for each box
-        result = contribution_matrix.sum(axis=1)
-        
-        return result.tolist()
+        answer = [0] * n
 
+        # Precompute cumulative sums of indices weighted by the presence of balls
+        total_left = 0
+        total_right = 0
+        weight_left = 0
+        weight_right = 0
+
+        # Calculate total weight and distances for the right side
+        for i in range(n):
+            if boxes[i] == '1':
+                weight_right += 1
+                total_right += i
+
+        # Compute the answer for each box
+        for i in range(n):
+            # Add contributions from the left and right
+            answer[i] = total_left + total_right
+
+            # Update totals for the next box
+            if boxes[i] == '1':
+                weight_left += 1
+                weight_right -= 1
+
+            total_left += weight_left
+            total_right -= weight_right
+
+        return answer
