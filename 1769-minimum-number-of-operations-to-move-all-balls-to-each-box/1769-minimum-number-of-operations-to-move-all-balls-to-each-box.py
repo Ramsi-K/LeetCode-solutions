@@ -1,31 +1,24 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         n = len(boxes)
-        answer = [0] * n
+        distances = [0] * n
 
-        # Precompute cumulative sums of indices weighted by the presence of balls
-        total_left = 0
-        total_right = 0
-        weight_left = 0
-        weight_right = 0
+        prefixCount = 0
+        prefixSum = 0
 
-        # Calculate total weight and distances for the right side
         for i in range(n):
+            distances[i] = prefixCount * i - prefixSum
             if boxes[i] == '1':
-                weight_right += 1
-                total_right += i
+                prefixCount += 1
+                prefixSum += i
 
-        # Compute the answer for each box
-        for i in range(n):
-            # Add contributions from the left and right
-            answer[i] = total_left + total_right
+        suffixCount = 0
+        suffixSum = 0
 
-            # Update totals for the next box
+        for i in range(n - 1, -1, -1):
+            distances[i] += suffixSum - suffixCount * i
             if boxes[i] == '1':
-                weight_left += 1
-                weight_right -= 1
+                suffixCount += 1
+                suffixSum += i
 
-            total_left += weight_left
-            total_right -= weight_right
-
-        return answer
+        return distances
