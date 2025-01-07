@@ -1,4 +1,14 @@
 class Solution:
     def stringMatching(self, words: List[str]) -> List[str]:
-        superstring = " ".join(words)
-        return [word for word in words if superstring.count(word) > 1]
+        # Sort words by length
+        words.sort(key=len)
+        result = []
+
+        # Check substrings
+        for i in range(len(words)):
+            for j in range(i + 1, len(words)):
+                if words[i] in words[j]:
+                    result.append(words[i])
+                    break
+
+        return result
