@@ -1,12 +1,9 @@
 class Solution:
     def countPrefixSuffixPairs(self, words: List[str]) -> int:
+        n = len(words)
         count = 0
-
-        # Iterate through all pairs (i, j) with i < j
-        for i in range(len(words)):
-            for j in range(i + 1, len(words)):
-                # Check prefix and suffix
-                if words[j][:len(words[i])] == words[i] and words[j][-len(words[i]):] == words[i]:
+        for i in range(n):
+            for j in range(i+1, n):
+                if words[j].startswith(words[i]) and words[j].endswith(words[i]):
                     count += 1
-
         return count
