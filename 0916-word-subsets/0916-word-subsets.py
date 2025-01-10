@@ -1,17 +1,16 @@
 class Solution:
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
-        def isSubset(a_count, b_count):
+        combined_count = Counter()
+        for b in words2:
+            b_count = Counter(b)
             for char in b_count:
-                if b_count[char] > a_count.get(char, 0):
-                    return False
-            return True
+                combined_count[char] = max(combined_count[char], b_count[char])
 
+        # Check each word in words1 against the combined requirement
         result = []
-        b_counts = [Counter(b) for b in words2]
-
         for word in words1:
             a_count = Counter(word)
-            if all(isSubset(a_count, b_count) for b_count in b_counts):
+            if all(a_count[char] >= combined_count[char] for char in combined_count):
                 result.append(word)
 
         return result
