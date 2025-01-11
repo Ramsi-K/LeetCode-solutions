@@ -8,7 +8,6 @@ class Solution:
         char_count = Counter(s)
 
         # Count characters with odd frequencies
-        odd_count = sum(1 for count in char_count.values() if count % 2 != 0)
-
+        odd_count = sum(freq % 2 for freq in char_count.values())
         # Check if the odd counts fit within k
         return odd_count <= k
