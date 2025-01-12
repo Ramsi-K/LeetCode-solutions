@@ -1,40 +1,33 @@
 class Solution:
     def canBeValid(self, s: str, locked: str) -> bool:
+        # If the length is odd, it's impossible to form valid parentheses
         if len(s) % 2 != 0:
             return False
 
-        open_count = 0  # Count of open parentheses
-        flexible_count = 0  # Count of flexible positions
-
-        # Forward pass: Check for sufficient open parentheses
+        # Forward pass: Ensure enough '(' to match ')'
+        balance = 0
+        flexible = 0
         for i in range(len(s)):
-            if locked[i] == '1':  # Fixed
-                if s[i] == '(':
-                    open_count += 1
-                else:
-                    open_count -= 1
-            else:  # Flexible
-                flexible_count += 1
+            if locked[i] == '1':  # Locked position
+                balance += 1 if s[i] == '(' else -1
+            else:  # Flexible position
+                flexible += 1
 
-            # Invalid state: More ')' than '(' + flexible
-            if open_count + flexible_count < 0:
+            # If ')' exceeds '(', use flexible positions
+            if balance + flexible < 0:
                 return False
 
-        open_count = 0
-        flexible_count = 0
-
-        # Backward pass: Check for sufficient close parentheses
+        # Backward pass: Ensure enough ')' to match '('
+        balance = 0
+        flexible = 0
         for i in range(len(s) - 1, -1, -1):
-            if locked[i] == '1':  # Fixed
-                if s[i] == ')':
-                    open_count += 1
-                else:
-                    open_count -= 1
-            else:  # Flexible
-                flexible_count += 1
+            if locked[i] == '1':  # Locked position
+                balance += 1 if s[i] == ')' else -1
+            else:  # Flexible position
+                flexible += 1
 
-            # Invalid state: More '(' than ')' + flexible
-            if open_count + flexible_count < 0:
+            # If '(' exceeds ')', use flexible positions
+            if balance + flexible < 0:
                 return False
 
         return True
