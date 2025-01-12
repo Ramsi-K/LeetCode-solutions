@@ -1,33 +1,34 @@
 class Solution:
     def canBeValid(self, s: str, locked: str) -> bool:
-        # Early exit if length is odd
-        if len(s) % 2 != 0:
+        n = len(s)
+
+        if n % 2 == 1:
             return False
 
-        # Forward pass: Ensure enough '(' to balance ')'
-        balance = 0
-        flexibility = 0
-        for i in range(len(s)):
-            if locked[i] == '1':  # Locked position
-                balance += 1 if s[i] == '(' else -1
-            else:  # Flexible position
-                flexibility += 1
+        if (locked[0] == "1" and s[0] == ")") or (locked[-1] == "1" and s[-1] == "("):
+            return False 
 
-            # If unmatched ')' exceeds the total available '(' + flexibility
-            if balance + flexibility < 0:
-                return False
+        brackets = []
+        arr = []
 
-        # Backward pass: Ensure enough ')' to balance '('
-        balance = 0
-        flexibility = 0
-        for i in range(len(s) - 1, -1, -1):
-            if locked[i] == '1':  # Locked position
-                balance += 1 if s[i] == ')' else -1
-            else:  # Flexible position
-                flexibility += 1
+        for i in range(n):
+            if locked[i] == "0":
+                arr.append(i)
+            elif s[i] == "(":
+                brackets.append(i)
+            else:
+                if brackets:
+                    brackets.pop()
+                elif arr:
+                    arr.pop()
+                else:
+                    return False
+        
+        while brackets and arr and brackets[-1] < arr[-1]:
+            brackets.pop()
+            arr.pop()
 
-            # If unmatched '(' exceeds the total available ')' + flexibility
-            if balance + flexibility < 0:
-                return False
-
+        if brackets:
+            return False
+        
         return True
