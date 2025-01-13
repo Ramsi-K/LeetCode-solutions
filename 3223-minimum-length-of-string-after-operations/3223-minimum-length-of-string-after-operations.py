@@ -1,20 +1,10 @@
 class Solution:
     def minimumLength(self, s: str) -> int:
-        n = len(s)
-        char_indices = defaultdict(list)
+        # Step 1: Count occurrences of each character
+        char_count = Counter(s)
 
-        # Step 1: Build a dictionary mapping characters to their indices
-        for i, char in enumerate(s):
-            char_indices[char].append(i)
+        # Step 2: Compute total removable indices
+        removable = sum((count // 3) * 2 for count in char_count.values())
 
-        # Step 2: Count and remove triplets mathematically
-        removed_count = 0
-        for indices in char_indices.values():
-            # Calculate the number of triplets that can be removed
-            while len(indices) >= 3:
-                removed_count += 2  # Remove leftmost and rightmost indices
-                indices.pop(0)  # Remove the leftmost index
-                indices.pop(-1)  # Remove the rightmost index
-
-        # Step 3: Return the remaining length
-        return n - removed_count
+        # Step 3: Return remaining length
+        return len(s) - removable
