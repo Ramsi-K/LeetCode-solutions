@@ -1,17 +1,13 @@
 class Solution:
     def minimumLength(self, s: str) -> int:
-        # Step 1: Build a dictionary to count occurrences
-        char_count = defaultdict(int)
-        for char in s:
-            char_count[char] += 1
+        char_count = Counter(s)
+        ans = 0
 
-        # Step 2: Remove triplets mathematically
-        removable = 0
+        # Iterate through each character's count
         for count in char_count.values():
-            if count >= 3:
-                # Calculate removable indices based on triplets
-                triplets = (count - 1) // 2
-                removable += triplets * 2
+            if count & 1:  # Odd count
+                ans += 1
+            elif count != 0:  # Even count
+                ans += 2
 
-        # Step 3: Return the remaining string length
-        return len(s) - removable
+        return ans
