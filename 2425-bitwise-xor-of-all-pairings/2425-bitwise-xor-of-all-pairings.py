@@ -1,19 +1,20 @@
 class Solution:
     def xorAllNums(self, nums1: List[int], nums2: List[int]) -> int:
-        xor1, xor2 = 0, 0
-    
-        # Compute XOR of all elements in nums1 and nums2
-        for num in nums1:
-            xor1 ^= num
-        for num in nums2:
-            xor2 ^= num
+        # Get the lengths of nums1 and nums2
+        len_nums1, len_nums2 = len(nums1), len(nums2)
         
-        # If nums1's length is odd, each element of nums2 contributes to the result
-        # If nums2's length is odd, each element of nums1 contributes to the result
-        result = 0
-        if len(nums1) % 2 == 1:
-            result ^= xor2
-        if len(nums2) % 2 == 1:
-            result ^= xor1
+        # Initialize the XOR result
+        xor_result = 0
         
-        return result
+        # If nums2 has an odd length, each element of nums1 contributes to the XOR
+        if len_nums2 % 2 == 1:
+            for num in nums1:
+                xor_result ^= num  # Add each element of nums1 to the XOR result
+        
+        # If nums1 has an odd length, each element of nums2 contributes to the XOR
+        if len_nums1 % 2 == 1:
+            for num in nums2:
+                xor_result ^= num  # Add each element of nums2 to the XOR result
+        
+        # Return the final XOR result
+        return xor_result
