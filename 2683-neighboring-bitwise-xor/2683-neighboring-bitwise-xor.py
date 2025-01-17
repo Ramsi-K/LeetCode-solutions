@@ -1,7 +1,11 @@
 class Solution:
     def doesValidArrayExist(self, derived: List[int]) -> bool:
         n = len(derived)
-        
+
+        # Step 1: Check circularity by XORing all derived elements
+        if sum(derived) % 2 != 0:
+            return False
+            
         # Helper function to check if a given starting value works
         def is_valid(start):
             original = [0] * n
