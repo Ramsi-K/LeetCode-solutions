@@ -5,35 +5,33 @@ class Solution:
 
         m, n = len(heightMap), len(heightMap[0])
         visited = [[False] * n for _ in range(m)]
-        deque_queue = deque()  # Deque for BFS-like traversal
+        heap = []
 
-        # Add all boundary cells to the deque
+        # Step 1: Add all boundary cells to the heap
         for i in range(m):
             for j in [0, n - 1]:  # Left and right boundaries
-                deque_queue.append((heightMap[i][j], i, j))
+                heapq.heappush(heap, (heightMap[i][j], i, j))
                 visited[i][j] = True
         for j in range(n):
             for i in [0, m - 1]:  # Top and bottom boundaries
-                deque_queue.append((heightMap[i][j], i, j))
+                heapq.heappush(heap, (heightMap[i][j], i, j))
                 visited[i][j] = True
 
+        # Step 2: Process the heap
         water_trapped = 0
         directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Right, left, down, up
 
-        # Process cells
-        while deque_queue:
-            height, x, y = deque_queue.popleft()
+        while heap:
+            height, x, y = heapq.heappop(heap)
             
             for dx, dy in directions:
                 nx, ny = x + dx, y + dy
+                
                 if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny]:
                     # Calculate trapped water
-                    trapped = max(0, height - heightMap[nx][ny])
-                    water_trapped += trapped
-                    
-                    # Update the neighbor's height to the boundary height
-                    new_height = max(height, heightMap[nx][ny])
-                    deque_queue.append((new_height, nx, ny))
+                    water_trapped += max(0, height - heightMap[nx][ny])
+                    # Update the height of the neighbor
+                    heapq.heappush(heap, (max(height, heightMap[nx][ny]), nx, ny))
                     visited[nx][ny] = True
 
         return water_trapped
