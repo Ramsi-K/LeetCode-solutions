@@ -2,18 +2,19 @@ class Solution:
     def bestClosingTime(self, customers: str) -> int:
         n = len(customers)
         
-        # Step 1: Precompute penalties for closed hours (suffix sum for 'Y')
-        penalty_closed = [0] * (n + 1)
-        for i in range(n - 1, -1, -1):
-            penalty_closed[i] = penalty_closed[i + 1] + (1 if customers[i] == 'Y' else 0)
+        # Convert 'Y' -> 1 and 'N' -> 0
+        customer_values = [1 if c == 'Y' else 0 for c in customers]
 
-        # Step 2: Iterate and calculate penalties dynamically
-        penalty_open = 0  # Tracks penalties for open hours (prefix sum for 'N')
+        # Compute suffix sum (penalty_closed)
+        penalty_closed = list(accumulate(customer_values[::-1]))[::-1]
+
+        # Simulate the process
+        penalty_open = 0
         min_penalty = float('inf')
         best_hour = 0
 
         for j in range(n + 1):
-            total_penalty = penalty_open + penalty_closed[j]
+            total_penalty = penalty_open + (penalty_closed[j] if j < n else 0)
             if total_penalty < min_penalty:
                 min_penalty = total_penalty
                 best_hour = j
