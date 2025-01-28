@@ -1,31 +1,32 @@
-from collections import deque
-
 class Solution:
     def findMaxFish(self, grid: List[List[int]]) -> int:
+        directions = [[0,1], [0,-1], [1,0], [-1,0]]
         m = len(grid)
-        n = len(grid[0]) if m > 0 else 0
-        max_fish = 0
-        visited = [[False for _ in range(n)] for _ in range(m)]
-        
+        n = len(grid[0])
+        maxFish = 0
+
+        def dfs(i: int, j: int, m: int, n: int) -> int:
+            fish = 0
+            
+            if grid[i][j] == 0:
+                return fish
+            
+            fish += grid[i][j]
+            grid[i][j] = -1  # Visited
+
+            for dir in directions:
+                nr = i + dir[0]
+                nc = j + dir[1]
+                if 0 <= nr < m and 0 <= nc < n:
+                    if grid[nr][nc] > 0:
+                        fish += dfs(nr, nc, m, n)
+            
+            return fish
+
         for i in range(m):
             for j in range(n):
-                if grid[i][j] > 0 and not visited[i][j]:
-                    # BFS to find all connected cells
-                    queue = deque()
-                    queue.append((i, j))
-                    visited[i][j] = True
-                    current_sum = grid[i][j]
-                    max_fish = max(max_fish, current_sum)
-                    
-                    while queue:
-                        x, y = queue.popleft()
-                        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                            nx = x + dx
-                            ny = y + dy
-                            if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny] and grid[nx][ny] > 0:
-                                visited[nx][ny] = True
-                                current_sum += grid[nx][ny]
-                                queue.append((nx, ny))
-                                max_fish = max(max_fish, current_sum)
-        
-        return max_fish
+                if grid[i][j] == 0:
+                    continue
+                maxFish = max(maxFish, dfs(i, j, m, n))
+
+        return maxFish
