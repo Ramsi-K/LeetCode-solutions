@@ -1,9 +1,12 @@
 class Solution:
     def clearDigits(self, s: str) -> str:
         stack = []
-        for char in s:
-            if stack and char.isnumeric():
-                stack.pop()
+        
+        for ch in s:
+            if ch.isdigit():
+                if stack:  # Remove closest non-digit to the left
+                    stack.pop()
             else:
-                stack.append(char)
+                stack.append(ch)  # Add non-digit to stack
+        
         return "".join(stack)
