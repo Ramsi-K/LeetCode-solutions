@@ -1,32 +1,28 @@
 class Solution:
     def punishmentNumber(self, n: int) -> int:
-        # Helper function that checks if we can partition the string s
-        # into contiguous substrings whose sum equals target.
         def canPartition(s: str, target: int) -> bool:
-            L = len(s)
+            # dp[i] is a set of possible sums that can be achieved using s[0:i]
+            N = len(s)
+            dp = [set() for _ in range(N + 1)]
+            dp[0].add(0)
             
-            # DFS function: starting at index `i`, with current sum `cur`
-            def dfs(i: int, cur: int) -> bool:
-                # If we've reached the end, check if we hit the target sum.
-                if i == L:
-                    return cur == target
-                # Try all possible splits starting from index i.
-                for j in range(i + 1, L + 1):
-                    # Convert the substring s[i:j] to an integer.
-                    part = int(s[i:j])
-                    # If we can complete a valid partition from j onward, return True.
-                    if dfs(j, cur + part):
-                        return True
-                return False
+            # Build dp table: for each starting index i, try all possible splits ending at j
+            for i in range(N):
+                # Only proceed if there's at least one sum accumulated at dp[i]
+                if dp[i]:
+                    for j in range(i + 1, N + 1):
+                        part = int(s[i:j])
+                        for prev_sum in dp[i]:
+                            dp[j].add(prev_sum + part)
             
-            return dfs(0, 0)
+            return target in dp[N]
         
         punishment = 0
-        # Check each integer i in [1, n]
+        # Check each i in [1, n]
         for i in range(1, n + 1):
-            square = i * i
-            s = str(square)
+            s = str(i * i)
             if canPartition(s, i):
-                punishment += square
+                punishment += i * i
+        
         return punishment
 
