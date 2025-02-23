@@ -9,21 +9,29 @@ class Solution:
         if not preorder:
             return None
         
+        # Create the root node
         root = TreeNode(preorder[0])
+        stack = [root]
+        post_index = 0  # Pointer for postorder traversal
         
-        if len(preorder) == 1:
-            return root
-        
-        # Find the index of the left subtree root in postorder
-        left_root_val = preorder[1]
-        left_root_idx = postorder.index(left_root_val)
-        
-        # Determine the size of the left subtree
-        left_size = left_root_idx + 1
-        
-        # Recursively construct the left and right subtrees
-        root.left = self.constructFromPrePost(preorder[1:1+left_size], postorder[:left_size])
-        root.right = self.constructFromPrePost(preorder[1+left_size:], postorder[left_size:-1])
+        # Iterate through the preorder traversal
+        for i in range(1, len(preorder)):
+            node = TreeNode(preorder[i])
+            
+            # If the top of the stack is not the current postorder element,
+            # the new node is the left child of the top of the stack
+            if stack[-1].val != postorder[post_index]:
+                stack[-1].left = node
+            else:
+                # Pop from the stack until the top no longer matches the postorder traversal
+                while stack and stack[-1].val == postorder[post_index]:
+                    stack.pop()
+                    post_index += 1
+                # The new node is the right child of the last popped node
+                stack[-1].right = node
+            
+            # Push the new node onto the stack
+            stack.append(node)
         
         return root
 
