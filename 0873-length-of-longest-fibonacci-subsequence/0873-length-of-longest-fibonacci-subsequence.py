@@ -1,28 +1,21 @@
 class Solution:
     def lenLongestFibSubseq(self, arr: List[int]) -> int:
-        n = len(arr)
-        index_map = {x: i for i, x in enumerate(arr)}
-        
-        # dp[j] will be a dictionary:
-        # dp[j][i] = length of Fibonacci-like sequence ending with arr[i] and arr[j]
-        dp = [dict() for _ in range(n)]
-        max_len = 0
+        n=len(arr)
+        x2i={}
+        dp=[[2]*n for _ in range(n)]
+        ans=0
 
-        for j in range(n):
-            for i in range(j):
-                needed = arr[j] - arr[i]
-                if needed in index_map:
-                    k = index_map[needed]
-                    if k < i:
-                        # If we already have a chain ending at (k, i)
-                        curr_len = dp[i].get(k, 2) + 1
-                        dp[j][i] = curr_len
-                        max_len = max(max_len, curr_len)
-                    else:
-                        # k >= i, not valid; store length=2
-                        dp[j][i] = 2
-                else:
-                    # no predecessor => length=2 for the pair (arr[i], arr[j])
-                    dp[j][i] = 2
+        for i, x in enumerate(arr):
+            x2i[x]=i
 
-        return max_len if max_len >= 3 else 0
+        for i1 in range(1, n-1):
+            f1=arr[i1]
+            for i2 in range(i1+1, n):
+                f2=arr[i2]
+                f0=f2-f1
+                if f0>=f1: break
+                if f0 in x2i:
+                    i0=x2i[f0]
+                    dp[i1][i2]=dp[i0][i1]+1
+                ans=max(ans, dp[i1][i2])
+        return ans if ans>2 else 0
