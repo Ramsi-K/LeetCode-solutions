@@ -2,27 +2,27 @@ class Solution:
     def minZeroArray(self, nums: List[int], queries: List[List[int]]) -> int:
         def can_zero_with_k(k):
             n = len(nums)
-            arr = nums[:]  # Copy the original nums array
             diff = [0] * (n + 1)  # Difference array
-    
+            
+            # Apply the first k queries
             for i in range(k):
                 l, r, val = queries[i]
                 diff[l] -= val
-                diff[r + 1] += val  # Apply range update
+                diff[r + 1] += val  # Range update
 
-            # Apply prefix sum on difference array
-            curr = 0
+            # Apply difference array to nums efficiently
+            curr_decrement = 0
             for i in range(n):
-                curr += diff[i]
-                arr[i] += curr  # Apply accumulated decrement
-                if arr[i] > 0:  # If any value is still > 0, we cannot zero it
+                curr_decrement += diff[i]  # Accumulate range updates
+                if nums[i] + curr_decrement > 0:  # If any number remains positive, return False
                     return False
 
             return True
 
-        # Edge Case: If nums is already all zeros, return 0 immediately
+        # **Edge Case: If nums is already all zeros, return 0 immediately**
         if all(num == 0 for num in nums):
             return 0
+
         # Binary search for the minimum k
         low, high = 1, len(queries)
         ans = -1
