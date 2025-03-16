@@ -1,25 +1,21 @@
 class Solution:
     def repairCars(self, ranks: List[int], cars: int) -> int:
-        def can_repair_in_time(t):
-            """Checks if we can repair all cars in at most `t` minutes."""
-            total_cars = 0
-            for r in ranks:
-                max_cars = int((t // r) ** 0.5)  # Solve n^2 <= t/r -> n <= sqrt(t/r)
-                total_cars += max_cars
-                if total_cars >= cars:  # Early exit if already possible
-                    return True
-            return False
-
-        # Binary search on minimum time required
-        low, high = 1, min(ranks) * cars * cars
-        best_time = high
-
-        while low <= high:
-            mid = (low + high) // 2
-            if can_repair_in_time(mid):
-                best_time = mid  # Store possible answer
-                high = mid - 1   # Try for a smaller time
+        freq=Counter(ranks)
+        minR=min(ranks)
+    #    maxR=max(ranks) # no need
+        def canRepair(t):
+            cnt=0
+            for x, f in freq.items():
+                cnt+=f*(sqrt(t/x)//1)
+                if cnt>=cars: return True
+            return cnt>=cars
+        
+        l, r=1, minR*cars*cars
+        while l<r:
+            m=(l+r)>>1
+            if canRepair(m):
+                r=m
             else:
-                low = mid + 1    # Increase time
-
-        return best_time
+                l=m+1
+        return l
+        
