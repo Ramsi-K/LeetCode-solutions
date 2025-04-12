@@ -1,65 +1,63 @@
-from collections import Counter
-from math import factorial
-from itertools import product
-
 class Solution:
-    def countGoodIntegers(self, num_digits: int, divisor: int) -> int:
-        valid_digit_frequencies = set()
+    def factorial(self, number):
+        chakra = 1
+        for i in range(1, number + 1):
+            chakra *= i
+        return chakra
 
-        def frequency_to_tuple(freq_dict):
-            return tuple(freq_dict.get(str(digit), 0) for digit in range(10))
+    def generatePalindromes(self, cloneID, index, validPalindromes, k):
+        if index >= (len(cloneID) + 1) // 2:
+            if int(cloneID) % k == 0:
+                validPalindromes.append(cloneID)
+            return
 
-        def construct_palindrome(left_half, middle_digit=""):
-            return "".join(left_half) + middle_digit + "".join(reversed(left_half))
+        if index != 0:
+            temp = cloneID
+            temp = temp[:index] + '0' + temp[index+1:]
+            temp = temp[:len(temp) - index - 1] + '0' + temp[len(temp) - index:]
+            self.generatePalindromes(temp, index + 1, validPalindromes, k)
 
-        if num_digits == 1:
-            for single_digit in range(1, 10):
-                if single_digit % divisor == 0:
-                    valid_digit_frequencies.add(frequency_to_tuple(Counter(str(single_digit))))
-        else:
-            half_length = num_digits // 2
-            all_digits = '0123456789'
+        for digit in range(1, 10):
+            temp = cloneID
+            temp = temp[:index] + str(digit) + temp[index+1:]
+            temp = temp[:len(temp) - index - 1] + str(digit) + temp[len(temp) - index:]
+            self.generatePalindromes(temp, index + 1, validPalindromes, k)
 
-            left_half_combinations = product(all_digits, repeat=half_length)
+    def countGoodIntegers(self, n, k):
+        validPalindromes = []
+        baseForm = "0" * n
+        self.generatePalindromes(baseForm, 0, validPalindromes, k)
+        
+        chakraPatterns = set()
 
-            if num_digits % 2 == 0:
-                for left_half in left_half_combinations:
-                    if left_half[0] == '0':
-                        continue  
-                    palindrome_str = construct_palindrome(left_half)
-                    palindrome_value = int(palindrome_str)
-                    if palindrome_value % divisor == 0:
-                        valid_digit_frequencies.add(frequency_to_tuple(Counter(palindrome_str)))
-            else:
+        for shadowClone in validPalindromes:
+            frequency = ['0'] * 10
+            for chakra in shadowClone:
+                idx = int(chakra)
+                if frequency[idx] == '9':
+                    frequency[idx] = 'A'  # beyond 9 digits (special case)
+                else:
+                    frequency[idx] = str(int(frequency[idx]) + 1)
+            chakraPatterns.add(''.join(frequency))
 
-                for left_half in left_half_combinations:
-                    if left_half[0] == '0':
-                        continue 
-                    for middle_digit in all_digits:
-                        palindrome_str = construct_palindrome(left_half, middle_digit)
-                        palindrome_value = int(palindrome_str)
-                        if palindrome_value % divisor == 0:
-                            valid_digit_frequencies.add(frequency_to_tuple(Counter(palindrome_str)))
+        basePermutations = self.factorial(n)
+        totalCount = 0
 
+        for pattern in chakraPatterns:
+            permutation = basePermutations
+            for freq in pattern:
+                divisor = 10 if freq == 'A' else int(freq)
+                permutation //= self.factorial(divisor)
 
-        total_valid_permutations = 0
-        for freq_tuple in valid_digit_frequencies:
-            digit_counts = list(freq_tuple)
+            if pattern[0] != '0':
+                zeroCount = int(pattern[0]) - 1
+                zeroRestrictedPerm = self.factorial(n - 1)
+                for freq in pattern[1:]:
+                    divisor = 10 if freq == 'A' else int(freq)
+                    zeroRestrictedPerm //= self.factorial(divisor)
+                zeroRestrictedPerm //= self.factorial(zeroCount)
+                permutation -= zeroRestrictedPerm
 
+            totalCount += permutation
 
-            total_permutations = factorial(num_digits)
-            for count in digit_counts:
-                total_permutations //= factorial(count)
-
-            invalid_permutations = 0
-            if digit_counts[0] > 0:
-                remaining_counts = digit_counts.copy()
-                remaining_counts[0] -= 1
-                invalid_permutations = factorial(num_digits - 1)
-                for count in remaining_counts:
-                    invalid_permutations //= factorial(count)
-
-            valid_permutations = total_permutations - invalid_permutations
-            total_valid_permutations += valid_permutations
-
-        return total_valid_permutations
+        return int(totalCount)
