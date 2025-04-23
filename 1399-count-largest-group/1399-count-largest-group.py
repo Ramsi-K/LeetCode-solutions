@@ -1,12 +1,17 @@
 class Solution:
     def countLargestGroup(self, n: int) -> int:
-        num_digits = int(log10(n)) + 1
-        max_digit_sum = 9 * num_digits
-        digit_sum_counts = [0] * (max_digit_sum + 1)
+        counts = [0] * 37  # Max digit sum = 9 + 9 + 9 + 9 = 36 (for n ≤ 10^4)
+
+        def digit_sum(x):
+            total = 0
+            while x:
+                total += x % 10
+                x //= 10
+            return total
 
         for i in range(1, n + 1):
-            s = sum(int(d) for d in str(i))  
-            digit_sum_counts[s] += 1
+            s = digit_sum(i)
+            counts[s] += 1
 
-        max_group_size = max(digit_sum_counts)
-        return digit_sum_counts.count(max_group_size)
+        max_size = max(counts)
+        return counts.count(max_size)
