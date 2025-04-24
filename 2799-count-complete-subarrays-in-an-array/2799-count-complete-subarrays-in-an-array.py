@@ -4,10 +4,10 @@ class Solution:
         count = 0
         n = len(nums)
 
-        for i in range(n):
+        for left in range(n):
             seen = set()
-            for j in range(i, n):
-                seen.add(nums[j])
+            for right in range(left, n):
+                seen.add(nums[right])
                 if len(seen) == total_distinct:
                     count += 1
         return count
