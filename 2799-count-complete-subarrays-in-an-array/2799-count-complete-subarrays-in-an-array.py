@@ -1,13 +1,18 @@
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
-        total_distinct = len(set(nums))
-        count = 0
         n = len(nums)
+        total = 0
+        total_unique = len(set(nums))
 
-        for left in range(n):
-            seen = set()
-            for right in range(left, n):
-                seen.add(nums[right])
-                if len(seen) == total_distinct:
-                    count += 1
-        return count
+        for i in range(n):
+            freq = {}
+            unique = 0
+            for j in range(i, n):
+                if nums[j] not in freq:
+                    freq[nums[j]] = 1
+                    unique += 1
+                else:
+                    freq[nums[j]] += 1
+                if unique == total_unique:
+                    total += 1
+        return total
