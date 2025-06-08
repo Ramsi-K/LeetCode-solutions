@@ -10,11 +10,8 @@ class Solution:
             cur = i  # 1 
             self.ans.append(cur)
             for i in range(10):
-                tmp = str(cur) + str(i)  # 1 0 
-                solve(int(tmp))
-
-                # int tmp = cur*10 +  i;
-                # solve(tmp,n);
+                tmp = cur * 10 + i
+                solve(tmp)
 
         for i in range(1, 10):
             solve(i)
