@@ -1,19 +1,26 @@
 class Solution:
     def lexicalOrder(self, n: int) -> list[int]:
-        self.ans = []
+        result = []
+        cur = 1
 
-        def solve(i):
-            # base conditon - where recursion gets over
-            if i > n:
-                return
+        for _ in range(n):  # n=102
+            result.append(cur)  # 1 // 10 // 100 // 
+            if cur * 10 <= n:  # 1000 // 1010
+                # Move to the next level (next digit)
+                cur *= 10  # 10 // 100 
+            else:
+                # Go back if cur exceeds n
+                if cur >= n:
+                    cur //= 10  # 1010 -> 101
 
-            cur = i  # 1 
-            self.ans.append(cur)
-            for i in range(10):
-                tmp = cur * 10 + i
-                solve(tmp)
+                # Increment to the next number
+                # e.g cur = 109
+                cur += 1  # 101 // 102 
 
-        for i in range(1, 10):
-            solve(i)
+                # Handle ending with 9 or out of bounds
+                # e.g. cur = 110
+                while cur % 10 == 0:  # zero at 10 multipules
+                    cur //= 10
+                # e.g. cur = 11
 
-        return self.ans
+        return result
