@@ -1,39 +1,51 @@
-class Solution:
-    MOD = 10**9 + 7
-    def possibleStringCount(self, word: str, k: int) -> int:
-        if not word:
-            return 0
+from typing import List
+MOD = 10**9 + 7
 
-        groups = []
+class Solution:
+    def possibleStringCount(self, word: str, k: int) -> int:
+        n = len(word)
+        
+        # Step 1: Run-length encode the input word
+        runs = []
         count = 1
-        for i in range(1, len(word)):
+        for i in range(1, n):
             if word[i] == word[i - 1]:
                 count += 1
             else:
-                groups.append(count)
+                runs.append(count)
                 count = 1
-        groups.append(count)
+        runs.append(count)
+        
+        num_groups = len(runs)
+        
+        # Step 2: If k > n, it's impossible
+        if k > n:
+            return 0
 
-        total = 1
-        for num in groups:
-            total = (total * num) % self.MOD
+        # Step 3: Total combinations without considering the length constraint
+        total_combinations = 1
+        for run_len in runs:
+            total_combinations = (total_combinations * run_len) % MOD
 
-        if k <= len(groups):
-            return total
+        # Step 4: If even the shortest possible string is ≥ k, return total
+        if k <= num_groups:
+            return total_combinations
 
-        dp = [0] * k
+        # Step 5: Count invalid shorter strings and subtract
+        extra_chars = k - num_groups
+        dp = [0] * extra_chars
         dp[0] = 1
 
-        for num in groups:
-            new_dp = [0] * k
-            sum_val = 0
-            for s in range(k):
-                if s > 0:
-                    sum_val = (sum_val + dp[s - 1]) % self.MOD
-                if s > num:
-                    sum_val = (sum_val - dp[s - num - 1] + self.MOD) % self.MOD
-                new_dp[s] = sum_val
+        for run_len in runs:
+            max_add = run_len - 1
+            new_dp = [0] * extra_chars
+            window_sum = 0
+            for i in range(extra_chars):
+                window_sum = (window_sum + dp[i]) % MOD
+                if i > max_add:
+                    window_sum = (window_sum - dp[i - max_add - 1]) % MOD
+                new_dp[i] = window_sum
             dp = new_dp
 
-        invalid = sum(dp[len(groups):k]) % self.MOD
-        return (total - invalid + self.MOD) % self.MOD
+        invalid_combinations = sum(dp) % MOD
+        return (total_combinations - invalid_combinations + MOD) % MOD
