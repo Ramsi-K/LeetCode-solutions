@@ -1,19 +1,19 @@
+from collections import Counter
+
 class FindSumPairs:
-    def __init__(self, nums1: List[int], nums2: List[int]):
-        self.nums1 = nums1
-        self.nums2 = nums2
-        self.freq = Counter(nums2)
+    def __init__(self, nums1, nums2):
+        self.n1 = nums1
+        self.n2 = nums2
 
-    def add(self, index: int, val: int) -> None:
-        self.freq[self.nums2[index]] -= 1  # Remove old one
-        self.nums2[index] += val
-        self.freq[self.nums2[index]] += 1  # Count new one
+    def add(self, index, val):
+        self.n2[index] += val
 
-    def count(self, tot: int) -> int:
-        ans = 0
-        for a in self.nums1:  
-            ans += self.freq[tot - a]  
-        return ans
+    def count(self, tot):
+        freq = Counter(self.n2)
+        res = 0
+        for x in self.n1:
+            res += freq[tot - x]
+        return res
         
 
 
