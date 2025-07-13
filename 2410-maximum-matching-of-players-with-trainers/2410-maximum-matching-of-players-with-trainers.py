@@ -2,11 +2,11 @@ class Solution:
     def matchPlayersAndTrainers(self, players: list[int], trainers: list[int]) -> int:
         players.sort()
         trainers.sort()
-
+        m, n = len(players), len(trainers)
         count = 0
         i = j = 0
 
-        while i < len(players) and j < len(trainers):
+        while i < m and j < n:
             if players[i] <= trainers[j]:
                 # Match found
                 count += 1
