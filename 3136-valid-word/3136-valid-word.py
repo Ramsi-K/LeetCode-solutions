@@ -11,7 +11,6 @@ class Solution:
             if not char.isdigit() and not char.isalpha(): 
                 # print("not valid", char)
                 return False
-                break        
             elif char.isalpha():
                 if char in vowels:
                     vowel_counter += 1
