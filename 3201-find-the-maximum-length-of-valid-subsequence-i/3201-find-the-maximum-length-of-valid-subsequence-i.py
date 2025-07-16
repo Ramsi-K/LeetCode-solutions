@@ -1,22 +1,25 @@
 class Solution:
     def maximumLength(self, nums: List[int]) -> int:
-        # Step 1: Initialize counters
-        even_count = 0
-        odd_count = 0
-        alt_even = 0
-        alt_odd = 0
+        if len(nums) == 1:
+            return 1
+        
+        odds: List[int] = []
+        evens: List[int] = []
+        even_odd: List[int] = []
+        odd_even: List[int] = []
 
-        # Step 2: Loop through each number
         for num in nums:
-            p = num % 2  # Step 2: Check if number is even or odd
-
-            # Step 3: Update counters
-            if p == 0:
-                even_count += 1            # Same-parity subsequence of evens
-                alt_even = alt_odd + 1     # Alternating sequence ending in even
+            if num % 2 == 0:
+                evens.append(num)
+                if len(even_odd) == 0 or even_odd[-1] % 2 == 1:
+                    even_odd.append(num)
+                if len(odd_even) > 0 and odd_even[-1] % 2 == 1:
+                    odd_even.append(num)
             else:
-                odd_count += 1             # Same-parity subsequence of odds
-                alt_odd = alt_even + 1     # Alternating sequence ending in odd
-
-        # Step 4 & 5: Return the maximum of all options
-        return max(even_count, odd_count, alt_even, alt_odd)
+                odds.append(num)
+                if len(even_odd) > 0 and even_odd[-1] % 2 == 0:
+                    even_odd.append(num)
+                if len(odd_even) == 0 or odd_even[-1] % 2 == 0:
+                    odd_even.append(num)
+        
+        return max(len(odds), len(evens), len(even_odd), len(odd_even))
