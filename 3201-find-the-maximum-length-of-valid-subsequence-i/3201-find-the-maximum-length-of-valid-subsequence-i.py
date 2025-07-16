@@ -3,10 +3,10 @@ class Solution:
         if len(nums) == 1:
             return 1
         
-        odds: List[int] = []
-        evens: List[int] = []
-        even_odd: List[int] = []
-        odd_even: List[int] = []
+        odds = []
+        evens = []
+        even_odd = []
+        odd_even = []
 
         for num in nums:
             if num % 2 == 0:
