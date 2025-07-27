@@ -1,29 +1,20 @@
+from typing import List
+from itertools import groupby
+
 class Solution:
     def countHillValley(self, nums: List[int]) -> int:
-        res = 0  # number of peaks and valleys
-        n = len(nums)
-        for i in range(1, n - 1):
-            if nums[i] == nums[i - 1]:continue
-            
-            left = (0)
-            for j in range(i - 1, -1, -1):
-                if nums[j] > nums[i]:
-                    left = 1
-                    break
-                elif nums[j] < nums[i]:
-                    left = -1
-                    break
-            
-            
-            right = (0)
-            for j in range(i + 1, n):
-                if nums[j] > nums[i]:
-                    right = 1
-                    break
-                elif nums[j] < nums[i]:
-                    right = -1
-                    break
-            if left == right and left != 0:
-                # at this time, index i is part of a peak or valley.
-                res += 1
-        return res
+        # Remove consecutive duplicates
+        filtered = [val for val, _ in groupby(nums)]
+
+        count = 0
+        for i in range(1, len(filtered) - 1):
+            prev = filtered[i - 1]
+            curr = filtered[i]
+            next_ = filtered[i + 1]
+
+            if prev < curr > next_:  # Hill
+                count += 1
+            elif prev > curr < next_:  # Valley
+                count += 1
+
+        return count
