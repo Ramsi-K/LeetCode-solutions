@@ -1,18 +1,23 @@
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
-        max_or_value = 0
-        dp = [0] * (1 << 17)
+        from itertools import combinations
 
-        # Initialize the empty subset
-        dp[0] = 1
+        max_or = 0
+        count = 0
 
-        # Iterate through each number in the input array
+        # Find max OR value possible
         for num in nums:
-            for i in range(max_or_value, -1, -1):
-                # For each existing subset, create a new subset by including the current number
-                dp[i | num] += dp[i]
+            max_or |= num
 
-            # Update the maximum OR value
-            max_or_value |= num
+        # Try all subsets and count how many match max OR
+        def dfs(i, curr_or):
+            nonlocal count
+            if i == len(nums):
+                if curr_or == max_or:
+                    count += 1
+                return
+            dfs(i + 1, curr_or | nums[i])  # include nums[i]
+            dfs(i + 1, curr_or)            # exclude nums[i]
 
-        return dp[max_or_value]
+        dfs(0, 0)
+        return count
