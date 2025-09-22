@@ -1,21 +1,15 @@
-class Solution:
-    def replaceNonCoprimes(self, nums: List[int]) -> List[int]:
-        ans = []
-        curr = nums[0]
-        for x in nums[1:]:
-            # Replace non-coprime numbers w/LCM
-            if gcd(curr, x) > 1:
-                curr = lcm(curr, x)
+from math import gcd
 
-                # Pop stack if no longer coprime
-                while ans and gcd(curr, ans[-1]) > 1:
-                    curr = lcm(curr, ans.pop())
-            else:
-                # Push coprime number to stack
-                ans.append(curr)
-                curr = x
-            
-        # Push coprime number to stack
-        ans.append(curr)
+class Solution(object):
+    def replaceNonCoprimes(self, nums):
+        stack = []
 
-        return ans
+        for num in nums:
+            while stack:
+                g = gcd(stack[-1], num)
+                if g == 1:
+                    break
+                num = (stack.pop() * num) // g
+            stack.append(num)
+
+        return stack
