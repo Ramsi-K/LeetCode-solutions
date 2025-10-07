@@ -1,20 +1,32 @@
-from bisect import bisect_right
-from sortedcontainers import SortedList
-
 class Solution:
     def avoidFlood(self, rains: List[int]) -> List[int]:
-        res, full, dry = [-1]*len(rains), {}, SortedList()
-        for i, lake in enumerate(rains):
-            if lake == 0:
-                dry.add(i)
-                res[i] = 1
-            elif lake in full:
-                j = dry.bisect_right(full[lake])
-                if j == len(dry):
-                    return []
-                res[dry[j]] = lake
-                dry.pop(j)
-                full[lake] = i
+        n = len(rains)
+        res = [-1] * n
+
+        hash = {}
+        dryDays = []
+
+        for i in range(0, n):
+            if rains[i] == 0:
+                dryDays.append(i)
             else:
-                full[lake] = i
+                lake = rains[i]
+                if lake in hash:
+                    j=0
+                    while j < len(dryDays) and dryDays[j] < hash[lake] - 1:
+                        j += 1
+
+                    if j >= len(dryDays): 
+                        return []
+                    else:
+                        res[dryDays[j]] = lake
+                        # dryDays.erase(dryDays.begin()+j)
+                        dryDays.remove(dryDays[j])
+                        hash[lake] = i+1
+                else:
+                    hash[lake] = i+1
+                
+        for i in range(0, n):
+            if rains[i] == 0 and res[i] == -1:
+                res[i] = 1
         return res
