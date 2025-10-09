@@ -1,12 +1,12 @@
+from numpy import array, append
 class Solution:
     def minTime(self, skill: List[int], mana: List[int]) -> int:
-        n, m = len(skill), len(mana)
-        done = [0] * (n + 1)
+        ans = sum(skill) * mana[-1]
+
+        acc = array(list(accumulate(skill)))
+        offset = append(0, acc[:-1])
         
-        for j in range(m):
-            for i in range(n):
-                done[i + 1] = max(done[i + 1], done[i]) + mana[j] * skill[i]
-            for i in range(n - 1, 0, -1):
-                done[i] = done[i + 1] - mana[j] * skill[i]
-                
-        return done[n]
+        for m1, m2 in pairwise(mana):
+            ans+= int((acc * m1 - offset * m2).max())
+
+        return ans
