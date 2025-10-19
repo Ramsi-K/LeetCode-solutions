@@ -1,29 +1,23 @@
 class Solution:
     def findLexSmallestString(self, s: str, a: int, b: int) -> str:
+        s = list(map(int, s))
         n = len(s)
-        # this map holds the new value of every digit after addition by a % 10
-        incremented = {str(n):str((n+a)%10) for n in range(10)}
+        step = gcd(b, n)
+        g = gcd(a, 10)
+        ans = [10]
 
-        # function applying the addition operation
-        def addOp(s):
-            res = ""
-            for i in range(n):
-                res += s[i] if i % 2 == 0 else incremented[s[i]]
-            return res
+        def modify(start: int) -> None:
+            ch = t[start] 
+            inc = ch % g - ch
+            if inc:
+                for j in range(start, n, 2):
+                    t[j] = (t[j] + inc) % 10
 
-        # function applying the rotation operation
-        def rotOp(s):
-            return s[n-b:] + s[:n-b]
+        for i in range(0, n, step):      
+            t = s[i:] + s[:i]
+            modify(1) 
+            if step % 2: 
+                modify(0) 
+            ans = min(ans, t)
 
-
-        seen = set()
-        def dfs(s):
-            if s in seen:
-                return
-            seen.add(s)
-            dfs(addOp(s))
-            dfs(rotOp(s))
-            return
-
-        dfs(s)
-        return min(seen)
+        return ''.join(map(str, ans))
