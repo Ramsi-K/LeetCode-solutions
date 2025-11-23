@@ -5,11 +5,8 @@ class Solution:
         if remainder == 0:
             return total
 
-        ones = [num for num in nums if num % 3 == 1]
-        twos = [num for num in nums if num % 3 == 2]
-
-        ones.sort()
-        twos.sort()
+        ones = sorted([num for num in nums if num % 3 == 1])
+        twos = sorted([num for num in nums if num % 3 == 2])
 
         # candidates after subtracting the minimal thing(s)
         candidates = []
