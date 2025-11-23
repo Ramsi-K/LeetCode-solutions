@@ -5,13 +5,8 @@ class Solution:
         if remainder == 0:
             return total
 
-        ones = []
-        twos = []
-        for x in nums:
-            if x % 3 == 1:
-                ones.append(x)
-            elif x % 3 == 2:
-                twos.append(x)
+        ones = [num for num in nums if num % 3 == 1]
+        twos = [num for num in nums if num % 3 == 2]
 
         ones.sort()
         twos.sort()
