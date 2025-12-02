@@ -1,11 +1,13 @@
 class Solution:
     def countTrapezoids(self, points: List[List[int]]) -> int:
-        MOD = (10**9) + 7
-        res = 0
-        d = Counter(y for _, y in points)
-        y_points = tuple(v * (v - 1) // 2 for v in d.values())
-        s = sum(y_points)
-        for y in y_points:
-            s -= y
-            res += y * s
-        return res % MOD
+        mod = 10**9 + 7
+        groups = defaultdict(int)
+        for x, y in points:
+            groups[y] += 1
+        a = []
+        for count in groups.values():
+            if count >= 2:
+                a.append(count * (count - 1) // 2)
+        S = sum(a)
+        T = sum(x * x for x in a)
+        return (S * S - T) // 2 % mod
