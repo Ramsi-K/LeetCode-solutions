@@ -1,27 +1,43 @@
 class Solution:
     def countPartitions(self, nums: List[int], k: int) -> int:
-        MOD = 10**9 + 7
-        sorted_window = SortedList()
+        mod = pow(10, 9) + 7
         n = len(nums)
+        dp = [0] * n
+        dp[0] = 1
+        for i in range(1, n):
+            largest = smallest = nums[i]
+            for j in range(i, -1, -1):
+                largest = max(largest, nums[j])
+                smallest = min(smallest, nums[j])
+                if largest - smallest > k:
+                    break
+                dp[i] += dp[j - 1] if j > 0 else 1
+                dp[i] %= mod
+        return dp[-1]
 
+    def countPartitions(self, nums: List[int], k: int) -> int:
+        mod = pow(10, 9) + 7
+        n = len(nums)
         dp = [1] + [0] * n
-        prefix_sum = [1] + [0] * n
-        left = 1
+        largest = deque()
+        smallest = deque()
+        acc = 1
+        j = 0
+        for i in range(n):
+            while largest and nums[largest[-1]] < nums[i]:
+                largest.pop()
+            largest.append(i)
+            while smallest and nums[smallest[-1]] > nums[i]:
+                smallest.pop()
+            smallest.append(i)
 
-        # Process each position as potential partition end
-        for right in range(1, n + 1):
-            sorted_window.add(nums[right - 1])
-
-            # Shrink window while range exceeds k
-            while sorted_window[-1] - sorted_window[0] > k:
-                sorted_window.remove(nums[left - 1])
-                left += 1
-
-            if left >= 2:
-                dp[right] = (prefix_sum[right - 1] - prefix_sum[left - 2] + MOD) % MOD
-            else:
-                dp[right] = prefix_sum[right - 1] % MOD
-
-            prefix_sum[right] = (prefix_sum[right - 1] + dp[right]) % MOD
-
-        return dp[n]
+            while nums[largest[0]] - nums[smallest[0]] > k:
+                acc = (acc - dp[j]) % mod
+                j += 1
+                if largest[0] < j:
+                    largest.popleft()
+                if smallest[0] < j:
+                    smallest.popleft()
+            dp[i + 1] = acc
+            acc = (acc + dp[i + 1]) % mod
+        return dp[-1]
