@@ -2,29 +2,20 @@ class Solution:
     def maximizeSquareArea(
         self, m: int, n: int, hFences: List[int], vFences: List[int]
     ) -> int:
-        maxL = 0
-        seen = set()
+        hFences.extend([1, m])
+        vFences.extend([1, n])
 
-        def findLen(fences, calM):
-            nonlocal maxL
-            fences.sort()  # not necessary but much faster
-            for x, y in combinations(fences, 2):
-                # the combinations have always x<=y
-                # for a sorted list, no need for abs
-                # abs makes the code slower
-                # but not true for a unsorted list
-                Len = y - x
-                if calM:
-                    if Len > maxL and Len in seen:
-                        maxL = Len
-                else:
-                    seen.add(Len)
+        stt = set()
+        ans = 0
 
-        hz, vz = len(hFences) + 2, len(vFences) + 2
-        if hz > vz:
-            return self.maximizeSquareArea(n, m, vFences, hFences)
-        hFences += [1, m]
-        vFences += [1, n]
-        findLen(hFences, False)
-        findLen(vFences, True)
-        return -1 if maxL == 0 else maxL * maxL % (10**9 + 7)
+        for i in range(len(hFences)):
+            for j in range(i + 1, len(hFences)):
+                stt.add(abs(hFences[j] - hFences[i]))
+
+        for i in range(len(vFences)):
+            for j in range(i + 1, len(vFences)):
+                val = abs(vFences[j] - vFences[i])
+                if val in stt:
+                    ans = max(ans, val)
+
+        return -1 if ans == 0 else (ans * ans) % (10**9 + 7)
