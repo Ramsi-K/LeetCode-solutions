@@ -5,7 +5,7 @@ class Solution:
         valley = 0
 
         for i in range(n - 1):
-            if peak == n - 1 and nums[i] > nums[i + 1]:
+            if peak == n - 1 and nums[i] >= nums[i + 1]:
                 peak = i
             if valley == 0 and nums[-1 - i] <= nums[-2 - i]:
                 valley = n - 1 - i
