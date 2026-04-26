@@ -6,6 +6,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Hash Table
@@ -19,9 +20,19 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Depth-First Search
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 ## Union-Find
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
+## Breadth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
+## Matrix
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 <!---LeetCode Topics End-->
