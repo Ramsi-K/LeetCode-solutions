@@ -19,6 +19,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
+| [0788-rotated-digits](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0788-rotated-digits/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Depth-First Search
@@ -48,4 +49,5 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
+| [0788-rotated-digits](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0788-rotated-digits/) | Medium |
 <!---LeetCode Topics End-->
