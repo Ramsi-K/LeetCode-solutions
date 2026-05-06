@@ -55,5 +55,10 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0061-rotate-list](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0061-rotate-list/) | Medium |
 | [1861-rotating-the-box](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1861-rotating-the-box/) | Medium |
+## Linked List
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0061-rotate-list](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0061-rotate-list/) | Medium |
 <!---LeetCode Topics End-->
