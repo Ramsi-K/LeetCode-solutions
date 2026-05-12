@@ -8,6 +8,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 | [1861-rotating-the-box](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1861-rotating-the-box/) | Medium |
 | [1914-cyclically-rotating-a-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
@@ -54,6 +55,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Sorting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 ## Dynamic Programming
 | Problem Name | Difficulty |
@@ -79,4 +81,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1914-cyclically-rotating-a-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
+## Greedy
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 <!---LeetCode Topics End-->
