@@ -9,6 +9,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
+| [1674-minimum-moves-to-make-array-complementary](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 | [1861-rotating-the-box](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1861-rotating-the-box/) | Medium |
 | [1914-cyclically-rotating-a-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
@@ -20,6 +21,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1674-minimum-moves-to-make-array-complementary](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Math
@@ -85,4 +87,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
+## Prefix Sum
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1674-minimum-moves-to-make-array-complementary](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
 <!---LeetCode Topics End-->
