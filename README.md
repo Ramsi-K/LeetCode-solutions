@@ -15,6 +15,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1914-cyclically-rotating-a-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 | [2770-maximum-number-of-jumps-to-reach-the-last-index](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2770-maximum-number-of-jumps-to-reach-the-last-index/) | Medium |
+| [2784-check-if-array-is-good](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2784-check-if-array-is-good/) | Easy |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 | [3660-jump-game-ix](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3660-jump-game-ix/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
@@ -22,6 +23,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1674-minimum-moves-to-make-array-complementary](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
+| [2784-check-if-array-is-good](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2784-check-if-array-is-good/) | Easy |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Math
@@ -59,6 +61,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
+| [2784-check-if-array-is-good](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2784-check-if-array-is-good/) | Easy |
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
