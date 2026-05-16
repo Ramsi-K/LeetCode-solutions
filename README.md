@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
+| [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
@@ -99,4 +100,5 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
+| [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 <!---LeetCode Topics End-->
