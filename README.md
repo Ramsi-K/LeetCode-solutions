@@ -34,6 +34,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [3635-earliest-finish-time-for-land-and-water-rides-ii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3635-earliest-finish-time-for-land-and-water-rides-ii/) | Medium |
 | [3660-jump-game-ix](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3660-jump-game-ix/) | Medium |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
+| [3838-weighted-word-mapping](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3838-weighted-word-mapping/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -120,6 +121,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [1914-cyclically-rotating-a-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
 | [2161-partition-array-according-to-given-pivot](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2161-partition-array-according-to-given-pivot/) | Medium |
+| [3838-weighted-word-mapping](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3838-weighted-word-mapping/) | Easy |
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -150,6 +152,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1871-jump-game-vii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1871-jump-game-vii/) | Medium |
 | [3043-find-the-length-of-the-longest-common-prefix](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3043-find-the-length-of-the-longest-common-prefix/) | Medium |
 | [3120-count-the-number-of-special-characters-i](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3120-count-the-number-of-special-characters-i/) | Easy |
+| [3838-weighted-word-mapping](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3838-weighted-word-mapping/) | Easy |
 ## Trie
 | Problem Name | Difficulty |
 | ------- | ------- |
