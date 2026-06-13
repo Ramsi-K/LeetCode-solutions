@@ -1,11 +1,15 @@
 class Solution:
-    def mapWordWeights(self, words: List[str], wt: List[int]) -> str:
-        res = []
-
+    def mapWordWeights(self, words: List[str], weights: List[int]) -> str:
+        result = []
+        
         for word in words:
-            s = 0
+            sum_weight = 0
+            
             for ch in word:
-                s += wt[(ord(ch) & (1 << 5) - 1) - 1]
-            res.append(chr(122 - (s - ((s * 2521) >> (1 << 4)) * len(wt))))
-
-        return "".join(res)
+                sum_weight += weights[ord(ch) - ord('a')]
+            
+            value = sum_weight % 26
+            
+            result.append(chr(ord('z') - value))
+        
+        return "".join(result)
