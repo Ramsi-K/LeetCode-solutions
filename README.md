@@ -10,6 +10,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
 | [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
+| [0486-predict-the-winner](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0486-predict-the-winner/) | Medium |
 | [1340-jump-game-v](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1340-jump-game-v/) | Hard |
 | [1345-jump-game-iv](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1345-jump-game-iv/) | Hard |
 | [1559-detect-cycles-in-2d-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
@@ -52,6 +53,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
+| [0486-predict-the-winner](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0486-predict-the-winner/) | Medium |
 | [0788-rotated-digits](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0788-rotated-digits/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 | [3300-minimum-element-after-replacement-with-digit-sum](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/3300-minimum-element-after-replacement-with-digit-sum/) | Easy |
@@ -94,6 +96,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0396-rotate-function/) | Medium |
+| [0486-predict-the-winner](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0486-predict-the-winner/) | Medium |
 | [0788-rotated-digits](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0788-rotated-digits/) | Medium |
 | [1340-jump-game-v](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1340-jump-game-v/) | Hard |
 | [1871-jump-game-vii](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/1871-jump-game-vii/) | Medium |
@@ -173,4 +176,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2196-create-binary-tree-from-descriptions](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/2196-create-binary-tree-from-descriptions/) | Medium |
+## Recursion
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0486-predict-the-winner](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0486-predict-the-winner/) | Medium |
+## Game Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0486-predict-the-winner](https://github.com/Ramsi-K/LeetCode-solutions/tree/main/0486-predict-the-winner/) | Medium |
 <!---LeetCode Topics End-->
